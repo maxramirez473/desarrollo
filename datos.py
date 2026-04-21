@@ -1,4 +1,5 @@
 import pandas as pd
+import time
 
 def obtener_alumnos():
     datos = pd.read_excel('Alumnos 2026.xlsx')
@@ -18,3 +19,9 @@ def eliminar_alumno(legajo):
     datos = datos[datos['Legajo'] != legajo] # Elimina el alumno con el legajo especificado, manteniendo solo los alumnos cuyo legajo no coincide con el proporcionado
     datos.to_excel('Alumnos 2026.xlsx', index=False) # Guarda los cambios en el archivo Excel después de eliminar el alumno
     return datos
+
+def saludar_usuario():
+    print("Bienvenido al sistema de gestion de alumnos.")
+    print("Cargando datos...")
+    time.sleep(2)
+    print("Datos cargados exitosamente.")
