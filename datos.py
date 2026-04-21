@@ -25,3 +25,12 @@ def saludar_usuario():
     print("Cargando datos...")
     time.sleep(2)
     print("Datos cargados exitosamente.")
+def modificar_alumno(legajo, nuevos_nombres=None, nuevo_email=None):
+    datos = obtener_alumnos()
+    if legajo in datos['Legajo'].values:
+        if nuevos_nombres is not None:
+            datos.loc[datos['Legajo'] == legajo, 'Nombres'] = nuevos_nombres # Modifica los nombres del alumno con el legajo especificado si se proporcionan nuevos nombres
+        if nuevo_email is not None:
+            datos.loc[datos['Legajo'] == legajo, 'Email'] = nuevo_email # Modifica el email del alumno con el legajo especificado si se proporciona un nuevo email
+        datos.to_excel('Alumnos 2026.xlsx', index=False) # Guarda los cambios en el archivo Excel después de modificar la información del alumno
+    return datos
